@@ -57,7 +57,7 @@ function setup() {
   backgroundScenario08 = new Scenario(backgroundScenarioImage08);
   backgroundScenario09 = new Scenario(backgroundScenarioImage09);
 
-  character = new Character(characterImage, 135, 110, 220, 270, 100, height-110, 4, 4, 'row');
+  character = new Character(characterImage, 135, 110, 220, 270, 100, height-110-50, 4, 4, 'row');
   characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-52, 4, 7, 'column');
   // audioGame.loop();
 }
@@ -77,24 +77,28 @@ function keyPressed(){
 function draw() {
   backgroundScenario09.show();
   backgroundScenario08.show();
+  backgroundScenario09.animate(1);
   backgroundScenario07.show();
+  backgroundScenario07.animate(3);
   backgroundScenario06.show();
-  backgroundScenario05.show();  
+  backgroundScenario05.show();
   backgroundScenario04.show();
+  backgroundScenario04.animate(3);
   backgroundScenario03.show();
-  backgroundScenario00.show();
-  backgroundScenario01.show();
+  backgroundScenario03.animate(3);
   backgroundScenario02.show();
+  backgroundScenario01.show();
+  backgroundScenario00.show();
   
-  characterEnemie.show();
-  characterEnemie.animate();
-  characterEnemie.play(10);
+  // characterEnemie.show();
+  // characterEnemie.animate();
+  // characterEnemie.play(10);
 
   character.show();
   character.animate();
   character.play(0);
-  if (character.isCollide(characterEnemie)) {
-    image(gameOverImage, width/2-205, height/2-37);
-    noLoop();
-  }
+  // if (character.isCollide(characterEnemie)) {
+  //   image(gameOverImage, width/2-205, height/2-37);
+  //   noLoop();
+  // }
 }
