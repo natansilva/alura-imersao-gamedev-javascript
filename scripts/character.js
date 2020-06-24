@@ -56,7 +56,7 @@ class Character{
 
     play(velocity){
         this.characterPositionX = this.characterPositionX - velocity;
-        this.characterPositionY = this.characterPositionY + 5;
+        this.characterPositionY = this.characterPositionY + 6;
 
         if(this.characterPositionX + this.characterWidth <= 0){
             this.characterPositionX = this.characterOriginalPositionX;
@@ -68,11 +68,16 @@ class Character{
         }
     }
 
+    restart(){
+        this.characterPositionX = this.characterOriginalPositionX;
+        this.characterPositionY = this.characterOriginalPositionY;
+    }
+
     jump(){
         this.nJumps++;
 
         if(this.nJumps <= this.maxJumps){
-            this.characterPositionY = this.characterPositionY - 100;
+            this.characterPositionY = this.characterPositionY - 150;
         }
     }
 

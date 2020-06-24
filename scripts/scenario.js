@@ -1,7 +1,6 @@
 class Scenario {
-    constructor(image, velocity) {
+    constructor(image) {
       this.image = image;
-      this.velocity = velocity;
       this.startScenario();
     }
   
@@ -15,12 +14,12 @@ class Scenario {
       image(this.image, this.xImage2, 0, width, height);
     }
   
-    animate(){
-      if (this.xImage2 == 0) {
+    animate(velocity){
+      if (this.xImage2 <= 0) {
         this.startScenario();
       } else {
-        this.xImage1 = this.xImage1 - this.velocity;
-        this.xImage2 = this.xImage2 - this.velocity;
+        this.xImage1 = this.xImage1 - velocity;
+        this.xImage2 = this.xImage2 - velocity;
       }
     }
   }
