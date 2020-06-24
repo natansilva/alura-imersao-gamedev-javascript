@@ -1,40 +1,87 @@
 class Character{
-    constructor(image){
+    constructor(image, characterWidth, characterHeight, spriteWidth, spriteHeight,
+        characterPositionX, characterPositionY, spriteColumns, spriteRows, spriteDirection){
         this.image = image;
-        this.factor = 0.5;
-        this.originalHeight = 220;
-        this.originalWidth = 270;
-        this.height = this.originalHeight * this.factor;
-        this.width = this.originalWidth * this.factor;
+        this.spriteHeight = spriteHeight;
+        this.spriteWidth = spriteWidth;
+        this.spriteCharacterPositionX = 0;
+        this.spriteCharacterPositionY = 0;
+        this.characterHeight = characterHeight;
+        this.characterWidth = characterWidth;
+        this.characterPositionX = characterPositionX;
+        this.characterOriginalPositionX = characterPositionX;
+        this.characterPositionY = characterPositionY;
+        this.characterOriginalPositionY = characterPositionY;
+        this.spriteColumns = spriteColumns;
+        this.spriteRows = spriteRows;
+        this.spriteDirection = spriteDirection;
 
-        this.positionX=0;
-        this.positionX2=this.originalHeight;
-        this.positionY=0;
-        this.positionY2=this.originalWidth
+        this.maxJumps = 2;
+        this.nJumps = 0;
 
         this.frameX = 0;
         this.frameY = 0;
     }
 
     show(){
-        image(this.image, 0,
-            height-this.height, this.width, this.height,
-            this.positionX, this.positionY, this.originalHeight, this.originalWidth);
+        image(
+            this.image, this.characterPositionX, this.characterPositionY,
+            this.characterWidth, this.characterHeight,
+            this.spriteCharacterPositionX, this.spriteCharacterPositionY,
+            this.spriteWidth, this.spriteHeight);
     }
 
     animate(){
-        this.positionX=this.frameX * this.originalHeight;
-        this.positionY=this.frameY * this.originalWidth;
+        if(this.spriteDirection == 'row'){
+            this.spriteCharacterPositionX=this.frameX * this.spriteWidth;
+            this.spriteCharacterPositionY=this.frameY * this.spriteHeight;
+        }
+
+        if(this.spriteDirection == 'column'){
+            this.spriteCharacterPositionX=this.frameY * this.spriteWidth;
+            this.spriteCharacterPositionY=this.frameX * this.spriteHeight;
+        }
 
         this.frameX++;
 
-        if (this.frameX == 4) {
+        if (this.frameX == this.spriteRows) {
             this.frameY++;
             this.frameX = 0;
         }
-        if (this.frameY == 4){
+
+        if (this.frameY == this.spriteColumns){
             this.frameY = 0;
         }
     }
 
+    play(velocity){
+        this.characterPositionX = this.characterPositionX - velocity;
+        this.characterPositionY = this.characterPositionY + 5;
+
+        if(this.characterPositionX + this.characterWidth <= 0){
+            this.characterPositionX = this.characterOriginalPositionX;
+        }
+
+        if(this.characterPositionY + this.characterHeight >= height){
+            this.characterPositionY = this.characterOriginalPositionY;
+            this.nJumps = 0;
+        }
+    }
+
+    jump(){
+        this.nJumps++;
+
+        if(this.nJumps <= this.maxJumps){
+            this.characterPositionY = this.characterPositionY - 100;
+        }
+    }
+
+    isCollide(collideObject){
+        const precision = 0.7;
+        const isCollide = collideRectRect(
+            this.characterPositionX, this.characterPositionY, this.characterWidth*precision, this.characterHeight*precision,
+            collideObject.characterPositionX, collideObject.characterPositionY, collideObject.characterWidth, collideObject.characterHeight);
+        
+        return isCollide;
+    }
 }
