@@ -62,7 +62,7 @@ class Character{
             this.characterPositionX = this.characterOriginalPositionX;
         }
 
-        if(this.characterPositionY + this.characterHeight >= height){
+        if(this.characterPositionY >= this.characterOriginalPositionY){
             this.characterPositionY = this.characterOriginalPositionY;
             this.nJumps = 0;
         }
