@@ -78,17 +78,20 @@ function keyPressed(){
 
 function draw() {
   backgroundScenario09.show();
+  backgroundScenario09.animate(0.5);
   backgroundScenario08.show();
-  backgroundScenario09.animate(1);
+  backgroundScenario08.animate(1);
   backgroundScenario07.show();
-  backgroundScenario07.animate(3);
+  backgroundScenario07.animate(1);
   backgroundScenario06.show();
   backgroundScenario05.show();
+  backgroundScenario05.animate(2);
   backgroundScenario04.show();
   backgroundScenario04.animate(3);
   backgroundScenario03.show();
   backgroundScenario03.animate(3);
   backgroundScenario02.show();
+  backgroundScenario02.animate(3);
   backgroundScenario01.show();
   backgroundScenario00.show();
   
