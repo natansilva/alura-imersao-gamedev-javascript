@@ -10,8 +10,9 @@ class Scenario {
     }
   
     show(){
-      image(this.image, this.xImage1, 0, width, height);
-      image(this.image, this.xImage2, 0, width, height);
+      console.log(height);
+      image(this.image, this.xImage1, 0, width, height, 0, 210);
+      image(this.image, this.xImage2, 0, width, height, 0, 210);
     }
   
     animate(velocity){
