@@ -45,7 +45,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(1080, 720);
+  createCanvas(928, 571);
   backgroundScenario00 = new Scenario(backgroundScenarioImage00);
   backgroundScenario01 = new Scenario(backgroundScenarioImage01);
   backgroundScenario02 = new Scenario(backgroundScenarioImage02);
@@ -57,10 +57,8 @@ function setup() {
   backgroundScenario08 = new Scenario(backgroundScenarioImage08);
   backgroundScenario09 = new Scenario(backgroundScenarioImage09);
 
-  console.log(height-110);
-
-  character = new Character(characterImage, 135, 110, 220, 270, 100, height-360, 4, 4, 'row');
-  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-300, 4, 7, 'column');
+  character = new Character(characterImage, 135, 110, 220, 270, 100, height-110, 4, 4, 'row');
+  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-52, 4, 7, 'column');
   // audioGame.loop();
 }
 
