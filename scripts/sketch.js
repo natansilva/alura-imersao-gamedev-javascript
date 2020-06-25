@@ -1,3 +1,5 @@
+const ground=65;
+
 let character;
 let characterImage;
 let characterEnemie;
@@ -57,8 +59,8 @@ function setup() {
   backgroundScenario08 = new Scenario(backgroundScenarioImage08);
   backgroundScenario09 = new Scenario(backgroundScenarioImage09);
 
-  character = new Character(characterImage, 135, 110, 220, 270, 100, height-110, 4, 4, 'row');
-  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-52, 4, 7, 'column');
+  character = new Character(characterImage, 135, 110, 220, 270, 100, height-ground-110, 4, 4, 'row');
+  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-ground-52, 4, 7, 'column');
   // audioGame.loop();
 }
 
