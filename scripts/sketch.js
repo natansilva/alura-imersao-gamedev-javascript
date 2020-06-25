@@ -75,6 +75,7 @@ function keyPressed(){
   if(key == 'Enter'){
     characterEnemie.restart();
     character.restart();
+    score.restart();
     loop();
   }
 }

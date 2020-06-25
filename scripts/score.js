@@ -19,6 +19,12 @@ class Score {
         }
     }
 
+    restart() {
+        this.placar1 = 0;
+        this.placar2 = 0;
+        this.placar3 = 0;
+    }
+
     play(){
         image(
             this.numbersImage, 100, 0, 50, 60,
