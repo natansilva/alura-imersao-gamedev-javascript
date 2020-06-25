@@ -1,9 +1,11 @@
 class Scenario {
-    constructor(image) {
+    constructor(image, xSprite=0, ySprite=0) {
       this.image = image;
       this.startScenario();
       this.yImage1 = 0;
       this.yImage2 = 0;
+      this.xSprite = xSprite;
+      this.ySprite = ySprite;
     }
   
     startScenario(){
@@ -12,8 +14,8 @@ class Scenario {
     }
   
     show(){
-      image(this.image, this.xImage1, this.yImage1, width, height);
-      image(this.image, this.xImage2, this.yImage2, width, height);
+      image(this.image, this.xImage1, this.yImage1, width, height, this.xSprite, this.ySprite);
+      image(this.image, this.xImage2, this.yImage2, width, height, this.xSprite, this.ySprite);
     }
 
     hide(){

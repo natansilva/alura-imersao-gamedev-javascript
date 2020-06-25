@@ -1,3 +1,5 @@
+const ground = 30;
+
 let character;
 let characterImage;
 let blueCharacterEnemie;
@@ -6,7 +8,6 @@ let flightBlueCharacterEnemie;
 let flightBlueCharacterEnemieImage;
 let trollCharacterEnemie;
 let trollCharacterEnemieImage;
-let ground;
 let hillScenario;
 let score;
 let scoreCount=0;
@@ -25,11 +26,9 @@ function preload(){
 
 function setup() {
   createCanvas(928, 571);
-  hillScenario = new HillScenario();
   treeScenario = new TreeScenario();
-  treeScenario.toogle();
-
-  ground = hillScenario.ground;
+  hillScenario = new HillScenario();
+  hillScenario.toogle();
 
   character = new Character(characterImage, 135, 110, 220, 270, 100, height-ground-110, 4, 4, 'row');
   blueCharacterEnemie = new Character(blueCharacterEnemieImage, 52, 52, 104, 104, width-52, height-ground-52, 4, 7, 'column');
@@ -77,6 +76,7 @@ function draw() {
   character.show();
   character.animate();
   character.play(0);
+
   score.play();
 
   if(score.score() % 500 == 0){
@@ -84,8 +84,8 @@ function draw() {
     treeScenario.toogle();
   }
   
-  // if (character.isCollide(blueCharacterEnemie)) {
-  //   image(gameOverImage, width/2-205, height/2-37);
-  //   noLoop();
-  // }
+  if (character.isCollide(blueCharacterEnemie)) {
+    image(gameOverImage, width/2-205, height/2-37);
+    noLoop();
+  }
 }

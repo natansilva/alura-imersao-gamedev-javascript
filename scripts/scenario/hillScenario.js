@@ -6,8 +6,6 @@ class HillScenario {
         this.backgroundScenario04 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_04.png'));
         this.backgroundScenario05 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_05.png'));
         this.backgroundScenario06 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_06.png'));
-
-        this.ground = 30;
     }
 
     show(){

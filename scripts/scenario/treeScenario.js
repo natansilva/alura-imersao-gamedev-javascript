@@ -1,6 +1,6 @@
 class TreeScenario {
     constructor(){
-        this.backgroundScenario00 = new Scenario(loadImage('images/scenario/tree/Layer_0000_9.png'));
+        this.backgroundScenario00 = new Scenario(loadImage('images/scenario/tree/Layer_0000_9.png'), 0, -30);
         this.backgroundScenario01 = new Scenario(loadImage('images/scenario/tree/Layer_0001_8.png'));
         this.backgroundScenario02 = new Scenario(loadImage('images/scenario/tree/Layer_0002_7.png'));
         this.backgroundScenario03 = new Scenario(loadImage('images/scenario/tree/Layer_0003_6.png'));
@@ -11,8 +11,6 @@ class TreeScenario {
         this.backgroundScenario08 = new Scenario(loadImage('images/scenario/tree/Layer_0008_3.png'));
         this.backgroundScenario09 = new Scenario(loadImage('images/scenario/tree/Layer_0009_2.png'));
         this.backgroundScenario10 = new Scenario(loadImage('images/scenario/tree/Layer_0010_1.png'));
-
-        this.ground = 30;
     }
 
     show(){
