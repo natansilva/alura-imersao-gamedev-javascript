@@ -16,11 +16,14 @@ class Character{
         this.spriteRows = spriteRows;
         this.spriteDirection = spriteDirection;
 
-        this.maxJumps = 2;
+        this.maxJumps = 1;
         this.nJumps = 0;
 
         this.frameX = 0;
         this.frameY = 0;
+        
+        this.jumpHeight = 150;
+        this.gravity = 20;
     }
 
     show(){
@@ -56,10 +59,14 @@ class Character{
 
     play(velocity){
         this.characterPositionX = this.characterPositionX - velocity;
-        this.characterPositionY = this.characterPositionY + 6;
+        this.characterPositionY = this.characterPositionY + this.gravity;
 
         if(this.characterPositionX + this.characterWidth <= 0){
             this.characterPositionX = this.characterOriginalPositionX;
+        }
+
+        if (this.characterPositionY <= this.characterOriginalPositionY - this.jumpHeight) {
+            this.gravity = this.gravity * -1;
         }
 
         if(this.characterPositionY >= this.characterOriginalPositionY){
@@ -77,7 +84,7 @@ class Character{
         this.nJumps++;
 
         if(this.nJumps <= this.maxJumps){
-            this.characterPositionY = this.characterPositionY - 150;
+            this.gravity = this.gravity * -1;
         }
     }
 
