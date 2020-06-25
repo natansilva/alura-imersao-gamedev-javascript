@@ -12,7 +12,7 @@ class TreeScenario {
         this.backgroundScenario09 = new Scenario(loadImage('images/scenario/tree/Layer_0009_2.png'));
         this.backgroundScenario10 = new Scenario(loadImage('images/scenario/tree/Layer_0010_1.png'));
 
-        this.ground = 65;
+        this.ground = 30;
     }
 
     show(){
@@ -33,5 +33,18 @@ class TreeScenario {
         this.backgroundScenario02.animate(3);
         this.backgroundScenario01.show();
         this.backgroundScenario00.show();
+    }
+
+    toogle(){
+        this.backgroundScenario09.toogle();
+        this.backgroundScenario08.toogle();
+        this.backgroundScenario07.toogle();
+        this.backgroundScenario06.toogle();
+        this.backgroundScenario05.toogle();
+        this.backgroundScenario04.toogle();
+        this.backgroundScenario03.toogle();
+        this.backgroundScenario02.toogle();
+        this.backgroundScenario01.toogle();
+        this.backgroundScenario00.toogle();
     }
 }

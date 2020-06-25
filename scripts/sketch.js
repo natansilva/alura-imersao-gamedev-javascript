@@ -2,7 +2,10 @@ let character;
 let characterImage;
 let characterEnemie;
 let characterEnemieImage;
+let ground;
+let hillScenario;
 let score;
+let scoreCount=0;
 let treeScenario;
 // let audioGame;
 
@@ -16,9 +19,13 @@ function preload(){
 
 function setup() {
   createCanvas(928, 571);
-  treeScenario = new TreeScenario();
-  character = new Character(characterImage, 135, 110, 220, 270, 100, height-treeScenario.ground-110, 4, 4, 'row');
-  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-treeScenario.ground-52, 4, 7, 'column');
+  hillScenario = new HillScenario();
+  // treeScenario = new TreeScenario();
+
+  ground = hillScenario.ground;
+
+  character = new Character(characterImage, 135, 110, 220, 270, 100, height-ground-110, 4, 4, 'row');
+  characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-ground-52, 4, 7, 'column');
   // audioGame.loop();
 
   score = new Score();
@@ -39,6 +46,7 @@ function keyPressed(){
 
 function draw() {
   treeScenario.show();
+  hillScenario.show();
   
   characterEnemie.show();
   characterEnemie.animate();
@@ -47,7 +55,6 @@ function draw() {
   character.show();
   character.animate();
   character.play(0);
-
   score.play();
   
   if (character.isCollide(characterEnemie)) {
