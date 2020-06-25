@@ -23,7 +23,7 @@ class Character{
         this.frameY = 0;
         
         this.jumpHeight = 200;
-        this.gravity = 20;
+        this.gravity = 13;
     }
 
     show(){
