@@ -25,6 +25,10 @@ class Score {
         this.placar3 = 0;
     }
 
+    score(){
+        return this.placar1 + this.placar2*10 + this.placar3*100;
+    }
+
     play(){
         image(
             this.numbersImage, 100, 0, 50, 60,

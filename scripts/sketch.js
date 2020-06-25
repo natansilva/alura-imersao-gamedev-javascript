@@ -26,7 +26,8 @@ function preload(){
 function setup() {
   createCanvas(928, 571);
   hillScenario = new HillScenario();
-  // treeScenario = new TreeScenario();
+  treeScenario = new TreeScenario();
+  treeScenario.toogle();
 
   ground = hillScenario.ground;
 
@@ -54,7 +55,7 @@ function keyPressed(){
 }
 
 function draw() {
-  // treeScenario.show();
+  treeScenario.show();
   hillScenario.show();
   
   blueCharacterEnemie.show();
@@ -77,9 +78,14 @@ function draw() {
   character.animate();
   character.play(0);
   score.play();
-  
-  if (character.isCollide(blueCharacterEnemie)) {
-    image(gameOverImage, width/2-205, height/2-37);
-    noLoop();
+
+  if(score.score() % 500 == 0){
+    hillScenario.toogle();
+    treeScenario.toogle();
   }
+  
+  // if (character.isCollide(blueCharacterEnemie)) {
+  //   image(gameOverImage, width/2-205, height/2-37);
+  //   noLoop();
+  // }
 }
