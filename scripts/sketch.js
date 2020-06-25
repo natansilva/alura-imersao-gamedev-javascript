@@ -49,6 +49,7 @@ function keyPressed(){
     blueCharacterEnemie.restart();
     character.restart();
     score.restart();
+    trollCharacterEnemieImage.restart();
     loop();
   }
 }
@@ -85,6 +86,11 @@ function draw() {
   }
   
   if (character.isCollide(blueCharacterEnemie)) {
+    image(gameOverImage, width/2-205, height/2-37);
+    noLoop();
+  }
+
+  if (character.isCollide(trollCharacterEnemieImage)) {
     image(gameOverImage, width/2-205, height/2-37);
     noLoop();
   }

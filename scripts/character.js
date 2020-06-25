@@ -16,14 +16,14 @@ class Character{
         this.spriteRows = spriteRows;
         this.spriteDirection = spriteDirection;
 
-        this.maxJumps = 1;
+        this.maxJumps = 2;
         this.nJumps = 0;
 
         this.frameX = 0;
         this.frameY = 0;
         
-        this.jumpHeight = 200;
-        this.gravity = 13;
+        this.jumpHeight = 150;
+        this.gravity = 6;
     }
 
     show(){
@@ -65,7 +65,7 @@ class Character{
             this.characterPositionX = this.characterOriginalPositionX;
         }
 
-        if (this.characterPositionY <= this.characterOriginalPositionY - this.jumpHeight) {
+        if (this.characterPositionY <= this.characterOriginalPositionY - this.jumpHeight * this.nJumps) {
             this.gravity = this.gravity * -1;
         }
 
@@ -78,21 +78,37 @@ class Character{
     restart(){
         this.characterPositionX = this.characterOriginalPositionX;
         this.characterPositionY = this.characterOriginalPositionY;
-    }
+        this.nJumps = 0;
 
-    jump(){
-        this.nJumps++;
-
-        if(this.nJumps <= this.maxJumps){
+        if (this.gravity < 0) {
             this.gravity = this.gravity * -1;
         }
     }
 
+    jump(){
+        if(this.nJumps < this.maxJumps){
+            this.nJumps++;
+
+            if (this.gravity > 0) {
+                this.gravity = this.gravity * -1;
+            }
+        }
+    }
+
     isCollide(collideObject){
-        const precision = 0.7;
-        const isCollide = collideRectRect(
-            this.characterPositionX, this.characterPositionY, this.characterWidth*precision, this.characterHeight*precision,
-            collideObject.characterPositionX, collideObject.characterPositionY, collideObject.characterWidth, collideObject.characterHeight);
+        const precision = 0.65;
+
+        const x1 = this.characterPositionX + (this.characterWidth*(1-precision))/2;
+        const y1 = this.characterPositionY + (this.characterHeight*(1-precision)/2);
+        const sx1 = this.characterWidth*precision;
+        const sy1 = this.characterHeight*precision;
+
+        const x2 = collideObject.characterPositionX + (collideObject.characterWidth*(1-precision))/2;
+        const y2 = collideObject.characterPositionY + (collideObject.characterHeight*(1-precision)/2)
+        const sx2 = collideObject.characterWidth*precision;
+        const sy2 = collideObject.characterHeight*precision;
+
+        const isCollide = collideRectRect(x1, y1, sx1, sy1, x2, y2, sx2, sy2);
         
         return isCollide;
     }
