@@ -24,6 +24,7 @@ let backgroundScenario06;
 let backgroundScenario07;
 let backgroundScenario08;
 let backgroundScenario09;
+let score;
 // let audioGame;
 
 function preload(){
@@ -62,6 +63,8 @@ function setup() {
   character = new Character(characterImage, 135, 110, 220, 270, 100, height-ground-110, 4, 4, 'row');
   characterEnemie = new Character(characterEnemieImage, 52, 52, 104, 104, width-52, height-ground-52, 4, 7, 'column');
   // audioGame.loop();
+
+  score = new Score();
 }
 
 function keyPressed(){
@@ -102,6 +105,9 @@ function draw() {
   character.show();
   character.animate();
   character.play(0);
+
+  score.play();
+  
   if (character.isCollide(characterEnemie)) {
     image(gameOverImage, width/2-205, height/2-37);
     noLoop();
