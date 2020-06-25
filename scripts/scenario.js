@@ -10,7 +10,6 @@ class Scenario {
     }
   
     show(){
-      console.log(height);
       image(this.image, this.xImage1, 0, width, height);
       image(this.image, this.xImage2, 0, width, height);
     }
