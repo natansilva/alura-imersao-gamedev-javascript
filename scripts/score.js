@@ -26,7 +26,7 @@ class Score {
     }
 
     score(){
-        return this.placar1 + this.placar2*10 + this.placar3*100;
+        return int(this.placar1 + this.placar2*10 + this.placar3*100);
     }
 
     play(){

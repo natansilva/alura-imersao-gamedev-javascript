@@ -61,10 +61,6 @@ class Character{
         this.characterPositionX = this.characterPositionX - velocity;
         this.characterPositionY = this.characterPositionY + this.gravity;
 
-        if(this.characterPositionX + this.characterWidth <= 0){
-            this.characterPositionX = this.characterOriginalPositionX;
-        }
-
         if (this.characterPositionY <= this.characterOriginalPositionY - this.jumpHeight * this.nJumps) {
             this.gravity = this.gravity * -1;
         }
