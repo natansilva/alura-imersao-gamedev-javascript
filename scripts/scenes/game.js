@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.className = 'Game';
-        this.ground = 30;
+        this.ground = 25;
         this.actualEnemieCount = 0;
         this.gameOverImage = loadImage('images/assets/game-over.png');
 

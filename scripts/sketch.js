@@ -7,7 +7,7 @@ function preload(){}
 
 function setup() {
   frameRate(60);
-  createCanvas(928, 571);
+  createCanvas(800, 400);
 
   game = new Game();
   start = new Start();
