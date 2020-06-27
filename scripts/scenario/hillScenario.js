@@ -5,19 +5,16 @@ class HillScenario {
         this.backgroundScenario03 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_03.png'));
         this.backgroundScenario04 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_04.png'));
         this.backgroundScenario05 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_05.png'));
-        this.backgroundScenario06 = new Scenario(loadImage('images/scenario/hill/Hills_Layer_06.png'));
     }
 
     show(){
         this.backgroundScenario01.show();
         this.backgroundScenario02.show();
-        this.backgroundScenario02.animate(0.5);
         this.backgroundScenario03.show();
-        this.backgroundScenario03.animate(2);
+        this.backgroundScenario03.animate(1);
         this.backgroundScenario04.show();
-        this.backgroundScenario04.animate(3);
+        this.backgroundScenario04.animate(4);
         this.backgroundScenario05.show();
-        this.backgroundScenario06.show();
     }
 
     toogle(){
@@ -26,6 +23,5 @@ class HillScenario {
         this.backgroundScenario03.toogle();
         this.backgroundScenario04.toogle();
         this.backgroundScenario05.toogle();
-        this.backgroundScenario06.toogle();
     }
 }

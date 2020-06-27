@@ -8,8 +8,6 @@ class Game {
         this.loadBackground();
         this.loadCharacter();
         this.loadScore();
-
-        this.enemie = NaN;
     }
 
     loadBackground() {
@@ -17,8 +15,8 @@ class Game {
         this.hillScenario = new HillScenario();
 
         this.scenarios = [
+            this.hillScenario,
             this.treeScenario,
-            this.hillScenario
         ];
 
         this.actualScenario = this.scenarios[0];
@@ -36,22 +34,18 @@ class Game {
     }
 
     loadCharacter(){
-        this.characterImage = loadImage('images/character/running.png');
-        this.character = new Character(this.characterImage, 135, 110, 220, 270, 100, height-this.ground-110, 4, 4, 'row');
+        this.characterImage = loadImage('images/character/hipsta.png');
+        this.character = new Character(this.characterImage, 110, 135, 220, 270, 0, height-this.ground-135, 4, 4, 'row');
         
-        this.blueCharacterEnemieImage = loadImage('images/enemies/blue-enemies.png');
-        this.blueCharacterEnemie = new Character(this.blueCharacterEnemieImage, 52, 52, 104, 104, width, height-this.ground-52, 4, 7, 'column');
-
-        this.flightBlueCharacterEnemieImage = loadImage('images/enemies/flight-blue-enemies.png');
-        this.flightBlueCharacterEnemie = new Character(this.flightBlueCharacterEnemieImage, 100, 75, 200, 150, width, height*2/3-this.ground-52, 5, 3, 'row');
+        this.golemCharacterEnemieImage = loadImage('images/enemies/golem.png');
+        this.golemCharacterEnemie = new Character(this.golemCharacterEnemieImage, 180, 120, 720, 480, width, height-this.ground-110, 18, 1, 'row');
 
         this.trollCharacterEnemieImage = loadImage('images/enemies/troll.png');
-        this.trollCharacterEnemieImage = new Character(this.trollCharacterEnemieImage, 200, 230, 400, 400, width, height-this.ground-200, 5, 5, 'row');
+        this.trollCharacterEnemie = new Character(this.trollCharacterEnemieImage, 320, 200, 1600, 1000, width, height-this.ground-170, 2, 5, 'row');
 
         this.enemies = [
-            this.blueCharacterEnemie,
-            this.flightBlueCharacterEnemie,
-            this.trollCharacterEnemieImage
+            this.golemCharacterEnemie,
+            this.trollCharacterEnemie,
         ];
     }
 
@@ -60,12 +54,10 @@ class Game {
     }
 
     restart() {
-        this.blueCharacterEnemie.restart();
-        this.flightBlueCharacterEnemie.restart();
         this.character.restart();
         this.score.restart();
-        this.trollCharacterEnemieImage.restart();
         this.actualEnemie = Math.floor(Math.random() * this.enemies.length);
+        this.enemies.forEach((enemie) => enemie.restart());
     }
 
     pressButton(key){
@@ -84,8 +76,7 @@ class Game {
 
         if (this.enemie.characterPositionX + this.enemie.characterWidth <= 0) {
             this.actualEnemieCount = Math.floor(Math.random() * this.enemies.length);
-            this.enemie.restart();
-        
+            this.enemie.restart();        
         }
 
         this.toogleScenario(this.score.score());

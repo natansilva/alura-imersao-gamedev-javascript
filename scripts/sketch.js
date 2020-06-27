@@ -6,7 +6,7 @@ let start;
 function preload(){}
 
 function setup() {
-  frameRate(60);
+  frameRate(30);
   createCanvas(800, 400);
 
   game = new Game();
