@@ -26,6 +26,10 @@ class Character{
         
         this.jumpHeight = 150;
         this.gravity = 6;
+
+        this.totalLife = 4;
+        this.life = 4;
+        this.lastDeath = new Date();
     }
 
     show(){
@@ -78,6 +82,7 @@ class Character{
         this.characterPositionX = this.characterOriginalPositionX;
         this.characterPositionY = this.characterOriginalPositionY;
         this.nJumps = 0;
+        this.life = this.totalLife;
 
         if (this.gravity < 0) {
             this.gravity = this.gravity * -1;
@@ -91,6 +96,14 @@ class Character{
             if (this.gravity > 0) {
                 this.gravity = this.gravity * -1;
             }
+        }
+    }
+
+    death() {
+        const secondAfterLastDeath = Math.floor((new Date() - this.lastDeath)/1000);
+        if (secondAfterLastDeath > 2) {
+            this.life--;
+            this.lastDeath = new Date();
         }
     }
 

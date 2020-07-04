@@ -8,6 +8,11 @@ class Game {
         this.loadBackground();
         this.loadCharacter();
         this.loadScore();
+        this.loadLifeBar();
+    }
+
+    loadLifeBar() {
+        this.lifeBar = new LifeBar();
     }
 
     loadBackground() {
@@ -81,10 +86,16 @@ class Game {
         this.enemie.play(Math.floor(Math.random() * 10) + 10);
 
         this.score.play();
+        this.lifeBar.play(this.character.totalLife, this.character.life);
         
         if (this.character.isCollide(this.enemie)) {
-            image(this.gameOverImage, width/2-205, height/2-37);
-            noLoop();
+            this.character.death();
+
+            if (this.character.life <= 0) {
+                image(this.gameOverImage, width/2-205, height/2-37);
+                this.lifeBar.play(this.character.totalLife, this.character.life);
+                noLoop();
+            }
         }
     }
 }
