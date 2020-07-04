@@ -1,9 +1,7 @@
 class Score {
     constructor(){
         this.numbersImage = loadImage('images/assets/numbers.png');
-        this.placar1 = 0;
-        this.placar2 = 0;
-        this.placar3 = 0;
+        this.placar = 0;
 
         this.numberMatrix = {
             0: { 'x':440, 'y':160, 'sx':100, 'sy':120 },
@@ -20,47 +18,33 @@ class Score {
     }
 
     restart() {
-        this.placar1 = 0;
-        this.placar2 = 0;
-        this.placar3 = 0;
+        this.placar = 0;
     }
 
     score(){
-        return int(this.placar1 + this.placar2*10 + this.placar3*100);
+        return int(this.placar);
     }
 
     play(){
-        if (int(this.placar1) == 10) {
-            this.placar1 = 0;
-            this.placar2++;
-        }
-
-        if (this.placar2 == 10) {
-            this.placar2 = 0;
-            this.placar3++;
-        }
-
-        if (this.placar3 == 10) {
-            this.placar1 = 0;
-            this.placar2 = 0;
-            this.placar3 = 0;
-        }
+        const placar1 = typeof ('' + int(this.placar))[0] == "undefined" ? '0' : ('' + int(this.placar))[0];
+        const placar2 = typeof ('' + int(this.placar))[1] == "undefined" ? '0' : ('' + int(this.placar))[1];
+        const placar3 = typeof ('' + int(this.placar))[2] == "undefined" ? '0' : ('' + int(this.placar))[2];
 
         image(
             this.numbersImage, 100, 0, 50, 60,
-            this.numberMatrix[int(this.placar1)].x, this.numberMatrix[int(this.placar1)].y,
-            this.numberMatrix[int(this.placar1)].sx, this.numberMatrix[int(this.placar1)].sy);
+            this.numberMatrix[int(placar1)].x, this.numberMatrix[int(placar1)].y,
+            this.numberMatrix[int(placar1)].sx, this.numberMatrix[int(placar1)].sy);
         
         image(
             this.numbersImage, 50, 0, 50, 60,
-            this.numberMatrix[this.placar2].x, this.numberMatrix[this.placar2].y,
-            this.numberMatrix[this.placar2].sx, this.numberMatrix[this.placar2].sy);
+            this.numberMatrix[placar2].x, this.numberMatrix[placar2].y,
+            this.numberMatrix[placar2].sx, this.numberMatrix[placar2].sy);
 
         image(
             this.numbersImage, 0, 0, 50, 60,
-            this.numberMatrix[this.placar3].x, this.numberMatrix[this.placar3].y,
-            this.numberMatrix[this.placar3].sx, this.numberMatrix[this.placar3].sy);
+            this.numberMatrix[placar3].x, this.numberMatrix[placar3].y,
+            this.numberMatrix[placar3].sx, this.numberMatrix[placar3].sy);
 
-        this.placar1 = this.placar1 + 0.1;
+        this.placar = this.placar + 0.1;
     }
 }
