@@ -1,6 +1,6 @@
 class Character{
     constructor(image, characterWidth, characterHeight, spriteWidth, spriteHeight,
-        characterPositionX, characterPositionY, spriteColumns, spriteRows, spriteDirection){
+        characterPositionX, characterPositionY, spriteColumns, spriteRows, spriteDirection, characterPoly=[]){
         this.image = image;
         this.spriteHeight = spriteHeight;
         this.spriteWidth = spriteWidth;
@@ -15,6 +15,8 @@ class Character{
         this.spriteColumns = spriteColumns;
         this.spriteRows = spriteRows;
         this.spriteDirection = spriteDirection;
+        this.characterPoly = characterPoly;
+
 
         this.maxJumps = 2;
         this.nJumps = 0;
@@ -60,6 +62,7 @@ class Character{
     play(velocity){
         this.characterPositionX = this.characterPositionX - velocity;
         this.characterPositionY = this.characterPositionY + this.gravity;
+        this.collidePoly = this.characterPoly.map((a) => createVector(a.x + this.characterPositionX, a.y + this.characterPositionY));
 
         if (this.characterPositionY <= this.characterOriginalPositionY - this.jumpHeight * this.nJumps) {
             this.gravity = this.gravity * -1;
@@ -92,20 +95,16 @@ class Character{
     }
 
     isCollide(collideObject){
-        const precision = 0.65;
+        // noFill();
+        // stroke(237, 34, 93);
+        // beginShape();
+        // this.collidePoly.forEach((a) => vertex(a.x, a.y));
+        // endShape(CLOSE);
 
-        const x1 = this.characterPositionX + (this.characterWidth*(1-precision))/2;
-        const y1 = this.characterPositionY + (this.characterHeight*(1-precision)/2);
-        const sx1 = this.characterWidth*precision;
-        const sy1 = this.characterHeight*precision;
+        // beginShape();
+        // collideObject.collidePoly.forEach((a) => vertex(a.x, a.y));
+        // endShape(CLOSE);
 
-        const x2 = collideObject.characterPositionX + (collideObject.characterWidth*(1-precision))/2;
-        const y2 = collideObject.characterPositionY + (collideObject.characterHeight*(1-precision)/2)
-        const sx2 = collideObject.characterWidth*precision;
-        const sy2 = collideObject.characterHeight*precision;
-
-        const isCollide = collideRectRect(x1, y1, sx1, sy1, x2, y2, sx2, sy2);
-        
-        return isCollide;
+        return collidePolyPoly(this.collidePoly, collideObject.collidePoly);
     }
 }
