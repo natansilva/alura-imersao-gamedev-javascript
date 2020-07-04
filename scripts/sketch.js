@@ -1,7 +1,6 @@
 let actualScene;
 let game;
 let start;
-// let audioGame;
 
 function preload(){}
 
@@ -18,7 +17,6 @@ function setup() {
     'game': game,
     'start': start,
   }
-  // audioGame.loop();
 }
 
 function keyPressed(){
