@@ -58,12 +58,7 @@ class Game {
     pressButton(key){
         if(key == 'ArrowUp'){
             this.character.jump();
-          }
-        
-          if(key == 'Enter'){
-            this.restart();
-            loop();
-          }
+        }
     }
 
     play() {
@@ -83,7 +78,7 @@ class Game {
 
         this.enemie.show();
         this.enemie.animate();
-        this.enemie.play(Math.floor(Math.random() * 10) + 5);
+        this.enemie.play(Math.floor(Math.random() * 10) + 10);
 
         this.score.play();
         

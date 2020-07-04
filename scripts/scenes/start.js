@@ -21,6 +21,8 @@ class Start {
         this.changeButtonCount = this.changeButtonCount + 0.03;
     }
 
+    restart() {}
+
     pressButton(key){ }
 
     _text() {

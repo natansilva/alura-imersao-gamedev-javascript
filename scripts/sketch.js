@@ -25,9 +25,12 @@ function keyPressed(){
   if (key == ' '){
     if (actualScene.className == 'Game'){
       actualScene = start;
+      actualScene.restart();
+      loop();
     } else {
       actualScene = game;
       actualScene.restart();
+      loop();
     }
   }
 
