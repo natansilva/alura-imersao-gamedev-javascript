@@ -26,12 +26,13 @@ class Score {
     }
 
     play(){
-        const placar1 = typeof ('' + int(this.placar))[0] == "undefined" ? '0' : ('' + int(this.placar))[0];
-        const placar2 = typeof ('' + int(this.placar))[1] == "undefined" ? '0' : ('' + int(this.placar))[1];
-        const placar3 = typeof ('' + int(this.placar))[2] == "undefined" ? '0' : ('' + int(this.placar))[2];
+        const lenPlacar = (''+this.placar).length;
+        const placar1 = typeof ('' + int(this.placar))[lenPlacar-3] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-3];
+        const placar2 = typeof ('' + int(this.placar))[lenPlacar-2] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-2];
+        const placar3 = typeof ('' + int(this.placar))[lenPlacar-1] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-1];
 
         image(
-            this.numbersImage, 100, 0, 50, 60,
+            this.numbersImage, 0, 0, 50, 60,
             this.numberMatrix[int(placar1)].x, this.numberMatrix[int(placar1)].y,
             this.numberMatrix[int(placar1)].sx, this.numberMatrix[int(placar1)].sy);
         
@@ -41,10 +42,10 @@ class Score {
             this.numberMatrix[placar2].sx, this.numberMatrix[placar2].sy);
 
         image(
-            this.numbersImage, 0, 0, 50, 60,
+            this.numbersImage, 100, 0, 50, 60,
             this.numberMatrix[placar3].x, this.numberMatrix[placar3].y,
             this.numberMatrix[placar3].sx, this.numberMatrix[placar3].sy);
 
-        this.placar = this.placar + 0.1;
+        this.placar = this.placar + 1;
     }
 }
