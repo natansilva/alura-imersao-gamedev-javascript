@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.className = 'Game';
-        this.ground = 25;
+        this.ground = int(height/16);
         this.actualEnemieCount = 0;
         this.gameOverImage = loadImage('images/assets/game-over.png');
 
@@ -35,7 +35,7 @@ class Game {
 
     loadCharacter(){
         this.characterImage = loadImage('images/character/hipsta.png');
-        this.character = new Character(this.characterImage, 110, 135, 220, 270, 0, height-this.ground-135, 4, 4, 'row');
+        this.character = new Character(this.characterImage, 110, 135, 220, 270, 50, height-this.ground-135, 4, 4, 'row');
         
         this.golemCharacterEnemieImage = loadImage('images/enemies/golem.png');
         this.golemCharacterEnemie = new Character(this.golemCharacterEnemieImage, 180, 120, 720, 480, width, height-this.ground-110, 18, 1, 'row');

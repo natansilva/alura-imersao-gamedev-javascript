@@ -26,10 +26,10 @@ class Score {
     }
 
     play(){
-        const lenPlacar = (''+this.placar).length;
-        const placar1 = typeof ('' + int(this.placar))[lenPlacar-3] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-3];
-        const placar2 = typeof ('' + int(this.placar))[lenPlacar-2] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-2];
-        const placar3 = typeof ('' + int(this.placar))[lenPlacar-1] == 'undefined' ? '0' : ('' + int(this.placar))[lenPlacar-1];
+        const lenPlacar = ('' + this.score()).length;
+        const placar1 = typeof ('' + this.score())[lenPlacar-3] == 'undefined' ? '0' : ('' + this.score())[lenPlacar-3];
+        const placar2 = typeof ('' + this.score())[lenPlacar-2] == 'undefined' ? '0' : ('' + this.score())[lenPlacar-2];
+        const placar3 = typeof ('' + this.score())[lenPlacar-1] == 'undefined' ? '0' : ('' + this.score())[lenPlacar-1];
 
         image(
             this.numbersImage, 0, 0, 50, 60,
@@ -46,6 +46,6 @@ class Score {
             this.numberMatrix[placar3].x, this.numberMatrix[placar3].y,
             this.numberMatrix[placar3].sx, this.numberMatrix[placar3].sy);
 
-        this.placar = this.placar + 1;
+        this.placar = this.placar + 0.1;
     }
 }
