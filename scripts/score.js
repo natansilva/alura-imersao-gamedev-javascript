@@ -31,8 +31,6 @@ class Score {
         const placar2 = typeof ('' + this.score())[lenPlacar-2] == 'undefined' ? '0' : ('' + this.score())[lenPlacar-2];
         const placar3 = typeof ('' + this.score())[lenPlacar-3] == 'undefined' ? '0' : ('' + this.score())[lenPlacar-3];
 
-        console.log(placar1, placar2, placar3);
-
         image(
             this.numbersImage, width-50, 0, 50, 60,
             this.numberMatrix[int(placar1)].x, this.numberMatrix[int(placar1)].y,
